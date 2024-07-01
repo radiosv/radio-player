@@ -1,0 +1,15 @@
+{
+  "name": "WebRadio SV",
+  "short_name": "Radio SV",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "img/cover.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
