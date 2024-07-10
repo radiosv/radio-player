@@ -71,7 +71,7 @@ class Page {
         // Função para atualizar a capa
         this.refreshCover = function (song = '', artist) {
             // Default cover art
-            var urlCoverArt = 'img/cover.png';
+            var urlCoverArt = 'img/cover.jpeg';
 
             // Criação da tag de script para fazer a requisição JSONP à API do Deezer
             const script = document.createElement('script');
@@ -186,12 +186,12 @@ audio.onvolumechange = function () {
     }
 }
 
-audio.onerror = function () {
-    var confirmacao = confirm('Stream Down / Network Error. \nClick OK to try again.');
+const getMediaErrorMessage = error => Object.keys(Object.getPrototypeOf(error.currentTarget.error)).find(key => error.currentTarget.error[key] === error.currentTarget.error.code);
 
-    if (confirmacao) {
-        window.location.reload();
-    }
+audio.onerror = function () {
+    console.log(`Media error occurred: ${getMediaErrorMessage(e)}`);
+    audio.load();
+    audio.play();
 }
 
 document.getElementById('volume').oninput = function () {
@@ -320,7 +320,7 @@ function handleDeezerResponse(data, song) {
     } else {
         // Caso não haja dados ou a lista de dados esteja vazia,
         // defina a capa padrão
-        var defaultArtworkUrl = 'img/cover.png';
+        var defaultArtworkUrl = 'img/cover.jpeg';
 
         coverArt.style.backgroundImage = 'url(' + defaultArtworkUrl + ')';
         coverBackground.style.backgroundImage = 'url(' + defaultArtworkUrl + ')';
