@@ -370,8 +370,6 @@ function handleDeezerResponse(data, song) {
 }
 
 function getStreamingData(data) {
-
-    console.log("Conteúdo dos dados recebidos:", data);
     // Parse JSON
     var jsonData = JSON.parse(data);
 
